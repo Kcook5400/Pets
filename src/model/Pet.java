@@ -10,6 +10,7 @@ import java.util.Date;
 //Colby Boell
 public class Pet {
 	//variables
+	private int id;
 	private String petName;
 	private Date visitDate;
 	private String petType;
