@@ -1,0 +1,3 @@
+module Pets {
+	exports model;
+}
