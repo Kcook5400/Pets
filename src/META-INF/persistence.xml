@@ -4,6 +4,5 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>model.Pet</class>
 		<class>model.Customer</class>
-		<class>model.AppointmentList</class>
 	</persistence-unit>
 </persistence>
