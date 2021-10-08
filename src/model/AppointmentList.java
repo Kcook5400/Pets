@@ -3,15 +3,26 @@ package model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 /**
  * @author kevin.cook - Kevin Cook
  *CIS175 - Fall 2021 
  * Oct 3, 2021
  */
 public class AppointmentList {
+	@Id
+	@GeneratedValue
 	private int id;
 	private Customer customer;
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Date visitDate;
+	@OneToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	private List<Pet> petsList;
 
 	/**

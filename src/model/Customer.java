@@ -1,11 +1,20 @@
 package model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="customer")
 /**
  * @author kevin.cook - Kevin Cook
  *CIS175 - Fall 2021 
  * Oct 3, 2021
  */
-public class Customer {
 
+public class Customer {
+	@Id
+	@GeneratedValue
 	private int id;
 	private String customerName;
 	

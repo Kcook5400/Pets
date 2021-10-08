@@ -2,6 +2,14 @@ package model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name ="pets")
 /**
  * @author kevin.cook - Kevin Cook
  *CIS175 - Fall 2021 
@@ -10,9 +18,15 @@ import java.util.Date;
 //Colby Boell
 public class Pet {
 	//variables
+	@Id
+	@GeneratedValue
+	@Column(name="id")
 	private int id;
+	@Column(name="petname")
 	private String petName;
+	@Column(name="visitDate")
 	private Date visitDate;
+	@Column(name="petType")
 	private String petType;
 	
 	/**
