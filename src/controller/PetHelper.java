@@ -27,12 +27,12 @@ public class PetHelper {
 		
 	}
 	
-	public List<Pet> showAllItems(){
+	public List<Pet> showAllPets(){
 		EntityManager em = emfactory.createEntityManager();
 		List<Pet> allPets = em.createQuery("SELECT i FROM ListItem i").getResultList();
 		return allPets;
 	}
-	public void deleteItem(Pet toDelete) {
+	public void deletePet(Pet toDelete) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		TypedQuery<Pet> typedQuery = em.createQuery("select p from Pet p where p.petName = :selectedpetName and p.visitDate = :selectedvisitDate",Pet.class);
@@ -53,7 +53,7 @@ public class PetHelper {
 	 * @param idToEdit
 	 * @return
 	 */
-	public Pet searchForItemById(int idToEdit) {
+	public Pet searchForPetById(int idToEdit) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		Pet found = em.find(Pet.class, idToEdit);
@@ -63,7 +63,7 @@ public class PetHelper {
 	/**
 	 * @param toEdit
 	 */
-	public void updateItem(Pet toEdit) {
+	public void updatePet(Pet toEdit) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		em.merge(toEdit);
