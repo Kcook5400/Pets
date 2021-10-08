@@ -1,7 +1,10 @@
 package controller;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 import model.Pet;
 
@@ -39,7 +42,7 @@ public class PetHelper {
 		
 		typedQuery.setMaxResults(1);
 		
-		ListItem result = typedQuery.getSingleResult();
+		Pet result = typedQuery.getSingleResult();
 		
 		em.remove(result);
 		em.getTransaction().commit();
@@ -50,17 +53,17 @@ public class PetHelper {
 	 * @param idToEdit
 	 * @return
 	 */
-	public ListItem searchForItemById(int idToEdit) {
+	public Pet searchForItemById(int idToEdit) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		ListItem found = em.find(ListItem.class, idToEdit);
+		Pet found = em.find(Pet.class, idToEdit);
 		em.close();
 		return found;
 	}
 	/**
 	 * @param toEdit
 	 */
-	public void updateItem(ListItem toEdit) {
+	public void updateItem(Pet toEdit) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		em.merge(toEdit);
@@ -68,32 +71,6 @@ public class PetHelper {
 		em.close();
 		
 		
-	}
-	/**
-	 * @param storeName
-	 * @return
-	 */
-	public List<ListItem> searchForItemByStore(String storeName) {
-		EntityManager em = emfactory.createEntityManager();
-		em.getTransaction().begin();
-		TypedQuery<ListItem> typedQuery = em.createQuery("select li from ListItem li where li.store = :selectedStore", ListItem.class);
-		typedQuery.setParameter("selectedStore", storeName);
-		List<ListItem> foundItems = typedQuery.getResultList();
-		em.close();
-		return foundItems;
-	}
-	/**
-	 * @param itemName
-	 * @return
-	 */
-	public List<ListItem> searchForItemByItem(String itemName) {
-		EntityManager em = emfactory.createEntityManager();
-		em.getTransaction().begin();
-		TypedQuery<ListItem> typedQuery = em.createQuery("select li from ListItem li where li.store = :selectedItem", ListItem.class);
-		typedQuery.setParameter("selectedStore", itemName);
-		List<ListItem> foundItems = typedQuery.getResultList();
-		em.close();
-		return foundItems;
 	}
 
 	public void cleanUp() {
