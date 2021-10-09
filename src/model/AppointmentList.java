@@ -18,6 +18,7 @@ public class AppointmentList {
 	@Id
 	@GeneratedValue
 	private int id;
+	private String appointmentName;
 	private Customer customer;
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	private LocalDate visitDate;
@@ -32,12 +33,59 @@ public class AppointmentList {
 		// TODO Auto-generated constructor stub
 	}
 
+
+	public AppointmentList(String appointmentName, Customer customer, LocalDate visitDate) {
+		this.appointmentName = appointmentName;
+		this.customer = customer;
+		this.visitDate = visitDate;
+	}
+
+	/**
+	 * @param customer
+	 * @param visitDate
+	 * @param petsList
+	 */
+	public AppointmentList(String appointmentName,Customer customer, LocalDate visitDate, List<Pet> petsList) {
+		super();
+		this.appointmentName = appointmentName;
+		this.customer = customer;
+		this.visitDate = visitDate;
+		this.petsList = petsList;
+	}
+
+	/**
+	 * @param id
+	 * @param customer
+	 * @param visitDate
+	 * @param petsList
+	 */
+	public AppointmentList(int id, String appointmentName,Customer customer, LocalDate visitDate, List<Pet> petsList) {
+		super();
+		this.id = id;
+		this.appointmentName = appointmentName;
+		this.customer = customer;
+		this.visitDate = visitDate;
+		this.petsList = petsList;
+	}
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	/**
+	 * @return the appointmentName
+	 */
+	public String getAppointmentName() {
+		return appointmentName;
+	}
+	/**
+	 * @param appointmentName the appointmentName to set
+	 */
+	public void setAppointmentName(String appointmentName) {
+		this.appointmentName = appointmentName;
 	}
 
 	public Customer getCustomer() {
@@ -63,33 +111,6 @@ public class AppointmentList {
 	public void setPetsList(List<Pet> petsList) {
 		this.petsList = petsList;
 	}
-
-	/**
-	 * @param customer
-	 * @param visitDate
-	 * @param petsList
-	 */
-	public AppointmentList(Customer customer, LocalDate visitDate, List<Pet> petsList) {
-		super();
-		this.customer = customer;
-		this.visitDate = visitDate;
-		this.petsList = petsList;
-	}
-
-	/**
-	 * @param id
-	 * @param customer
-	 * @param visitDate
-	 * @param petsList
-	 */
-	public AppointmentList(int id, Customer customer, LocalDate visitDate, List<Pet> petsList) {
-		super();
-		this.id = id;
-		this.customer = customer;
-		this.visitDate = visitDate;
-		this.petsList = petsList;
-	}
-
 	@Override
 	public String toString() {
 		return "AppointmentList [id=" + id + ", customer=" + customer + ", visitDate=" + visitDate + ", petsList="
