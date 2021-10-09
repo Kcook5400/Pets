@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,8 +22,6 @@ public class Pet {
 	private int id;
 	@Column(name="petname")
 	private String petName;
-	@Column(name="visitDate")
-	private Date visitDate;
 	@Column(name="petType")
 	private String petType;
 	
@@ -44,10 +40,9 @@ public class Pet {
 	 * @param visitDate
 	 * @param petType
 	 */
-	public Pet(String petName, Date visitDate, String petType) {
+	public Pet(String petName,String petType) {
 		super();
 		this.petName = petName;
-		this.visitDate = visitDate;
 		this.petType = petType;
 	}
 	//getters/setters
@@ -69,25 +64,6 @@ public class Pet {
 	public void setPetName(String petName) {
 		this.petName = petName;
 	}
-
-
-
-	/**
-	 * @return the visitDate
-	 */
-	public Date getVisitDate() {
-		return visitDate;
-	}
-
-
-
-	/**
-	 * @param visitDate the visitDate to set
-	 */
-	public void setVisitDate(Date visitDate) {
-		this.visitDate = visitDate;
-	}
-
 
 
 	/**

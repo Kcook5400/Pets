@@ -18,7 +18,7 @@ public class PetHelper {
 	EntityManagerFactory emfactory =
 	Persistence.createEntityManagerFactory("PetList");
 
-	public void insertItem(Pet pet) {
+	public void insertPet(Pet pet) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(pet);
@@ -35,10 +35,10 @@ public class PetHelper {
 	public void deletePet(Pet toDelete) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Pet> typedQuery = em.createQuery("select p from Pet p where p.petName = :selectedpetName and p.visitDate = :selectedvisitDate",Pet.class);
+		TypedQuery<Pet> typedQuery = em.createQuery("select p from Pet p where p.petName = :selectedpetName and p.petType = :selectedpetType",Pet.class);
 		
-		typedQuery.setParameter("selectedName", toDelete.getPetName());
-		typedQuery.setParameter("selectedType", toDelete.getVisitDate());
+		typedQuery.setParameter("selectedpetName", toDelete.getPetName());
+		typedQuery.setParameter("selectedpetType", toDelete.getPetType());
 		
 		typedQuery.setMaxResults(1);
 		
