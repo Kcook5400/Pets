@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
+import java.time.LocalDate;
 /**
  * @author kevin.cook - Kevin Cook
  *CIS175 - Fall 2021 
@@ -21,7 +21,7 @@ public class AppointmentList {
 	private int id;
 	private Customer customer;
 	@ManyToOne(cascade=CascadeType.PERSIST)
-	private Date visitDate;
+	private LocalDate visitDate;
 	@OneToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	private List<Pet> petsList;
 
@@ -49,11 +49,11 @@ public class AppointmentList {
 		this.customer = customer;
 	}
 
-	public Date getVisitDate() {
+	public LocalDate getVisitDate() {
 		return visitDate;
 	}
 
-	public void setVisitDate(Date visitDate) {
+	public void setVisitDate(LocalDate visitDate) {
 		this.visitDate = visitDate;
 	}
 
@@ -70,7 +70,7 @@ public class AppointmentList {
 	 * @param visitDate
 	 * @param petsList
 	 */
-	public AppointmentList(Customer customer, Date visitDate, List<Pet> petsList) {
+	public AppointmentList(Customer customer, LocalDate visitDate, List<Pet> petsList) {
 		super();
 		this.customer = customer;
 		this.visitDate = visitDate;
@@ -83,7 +83,7 @@ public class AppointmentList {
 	 * @param visitDate
 	 * @param petsList
 	 */
-	public AppointmentList(int id, Customer customer, Date visitDate, List<Pet> petsList) {
+	public AppointmentList(int id, Customer customer, LocalDate visitDate, List<Pet> petsList) {
 		super();
 		this.id = id;
 		this.customer = customer;
